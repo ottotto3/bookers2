@@ -1,10 +1,33 @@
-<!-- ユーザーの詳細 -->
-<div>
-  <h3><%= @user.name %></h3>
-  <%= image_tag @user.get_profile_image(100,100) %>
-  <% if @user == current_user %>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-  <% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4" style="background-color: #fff;">
+      
+      <%= render 'list', book: @books, user: @user %>
+      
+    </div>
+    
+    <div class="col-lg-8">
+      <table class="table">
+        <h2>Users</h2>
+        <thead>
+          <tr>
+          <th>image</th>
+          <th>name</th>
+          <th></th>
+        </tr>
+      </thead>
+    </div>
+  </div>
 </div>
 
-<%= render 'books/list', books: @books %>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= image_tag user.get_profile_image(100,100) %></td>
+        <td><%= user.name %></td>
+        <td><%= link_to user_path(user.id) do %>Show<% end %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
