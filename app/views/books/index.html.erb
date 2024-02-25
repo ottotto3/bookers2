@@ -1,29 +1,23 @@
-<% if @book.errors.any? %>
-    <%= @book.errors.count %>件のエラーが発生しました
-    <ul>
-        <% @book.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-        <% end %>
-    </ul>
+<div class="container mt-3">
+  <% if @book.errors.any? %>
+  <h3><%= @book.errors.count %>errors prohibited this obj from being saved:</h3>
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
     <% end %>
-    
-<div class="container">
+  </ul>
+  <% end %>
   <div class="row">
-    <div class="col-lg-4" style="background-color: orange;">
-      
-      <h1 class="row">New book</h1>
-        <%= form_with model: @book do |f| %>
-          <h4>Title</h4>
-            <%= f.text_field :title %>
-          <h4>Opinion</h4>
-            <%= f.text_area :body %>
-            <%= f.submit 'Create Book' %>
-        <% end %>
+    <div class="col-lg-4">
+      <div>
+        <%= render 'users/info', user: @user %>
+        <%= render 'form', book: @book %>
+      </div>
     </div>
     
     <div class="col-lg-8">
       <table class="table">
-        <h1>Books</h1>
+        <h2>Books</h2>
         <thead>
           <tr>
           <th></th>
