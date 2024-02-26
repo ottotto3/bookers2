@@ -1,17 +1,15 @@
-<div>
-  <%= flash[:notice] %>
-</div>
 
-<div class="container mt-3">
+
+<div class="container">
   <div class="row">
-    <div class="col-lg-4">
+    <div class="col-md-3">
       <div>
         <%= render 'users/info', user: @book.user %>
         <%= render 'form', book: @book_new %>
       </div>
     </div>
     
-      <div class="col-lg-8">
+      <div class="col-md-8 offset-md-1">
         <table class="table">
           <h2>Book detail</h2>
           <% if @book.user == current_user %>

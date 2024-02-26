@@ -1,18 +1,14 @@
-<!--フラッシュメッセージ-->
-<div>
-  <%= flash[:notice] %>
-</div>
 
-<div class="container mt-3">
+<div class="container">
   <div class="row">
-    <div class="col-lg-4">
+    <div class="col-md-3">
       <div>
         <%= render 'info', user: @user %>
         <%= render 'books/form', book: @book %>
       </div>
     </div>
-    
-    <div class="col-lg-8">
+
+    <div class="col-md-8 offset-md-1">
       <table class="table">
         <h2>Books</h2>
         <thead>
@@ -27,10 +23,12 @@
 <tbody>
     <% @books.each do |book| %>
       <tr>
-        <td><%= image_tag book.user.get_profile_image(100,100) %></td>
+        <td><%= link_to user_path(book.user.id) do %>
+          <%= image_tag book.user.get_profile_image(100,100) %><% end %>
+        </td>
         <td><%= link_to book_path(book.id) do %><%= book.title %><% end %></td>
         <td><%= book.body %></td>
       </tr>
       <% end %>
-          </tbody>  
+          </tbody>
 </table>

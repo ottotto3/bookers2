@@ -1,14 +1,14 @@
 
-<div class="container mt-2">
+<div class="container">
   <div class="row">
-    <div class="col-lg-4">
+    <div class="col-md-3">
       <div>
         <%= render 'info', user: @user %>
         <%= render 'books/form', book: @book %>
       </div>
     </div>
     
-    <div class="col-lg-8">
+    <div class="col-md-8 offset-md-1">
       <table class="table">
         <h2>Users</h2>
         <thead>
